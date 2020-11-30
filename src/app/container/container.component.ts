@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
+  imageUrl = `https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg`;
+
   constructor() { }
 
   ngOnInit() {
