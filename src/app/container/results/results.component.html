@@ -1,27 +1,14 @@
 <div class="results container">
   <div *ngFor="let photo of photosList; let i = index">
-    <div *ngIf="photo.id" class="card-container col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xl-4">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title style="height: 50px; overflow: hidden;">{{ photo.title }}</mat-card-title>
-          <mat-card-subtitle style="height: 25px;">Owner: {{ photo.owner }}</mat-card-subtitle>
-        </mat-card-header>
-        <img
-          mat-card-image
-          [src]="getImageUrl(i)"
-          alt="Photo of a Shiba Inu"
-          style="margin-bottom: 0;"
-        />
-        <mat-card-content>
-          <p>
-            <!-- content here from flickr -->
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-flat-button color="accent" style="width: 100%;" (click)="openDialog(photo)">View</button>
-        </mat-card-actions>
-      </mat-card>
+    <div
+      *ngIf="photo.id"
+      class="card-container col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xl-4"
+    >
+      <img
+        mat-card-image
+        [src]="getImageUrl(i)"
+        (click)="openDialog(photo)"
+      />
     </div>
   </div>
 </div>

@@ -1,27 +1,11 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title style="height: 50px; overflow: hidden">{{
-      data.title
-    }}</mat-card-title>
-    <mat-card-subtitle style="height: 25px"
-      >Owner: {{ data.owner }}</mat-card-subtitle
-    >
+    <mat-card-title>{{ data.title }}</mat-card-title>
+    <mat-card-subtitle>Owner: {{ data.owner }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    [src]="getImageUrl(i)"
-    alt="Photo of a Shiba Inu"
-    style="margin-bottom: 0"
-  />
+  <img mat-card-image [src]="getImageUrl()" alt="Photo of a Shiba Inu" />
   <mat-card-actions>
-    <button
-      mat-flat-button
-      color="accent"
-      style="width: 100%"
-      (click)="onNoClick()"
-    >
-      Close
-    </button>
+    <button mat-flat-button color="accent" (click)="onNoClick()">Close</button>
   </mat-card-actions>
 </mat-card>

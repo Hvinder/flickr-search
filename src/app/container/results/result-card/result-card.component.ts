@@ -17,7 +17,7 @@ export class ResultCardComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  getImageUrl(index: number): string {
+  getImageUrl(): string {
     return `https://live.staticflickr.com/${this.data.server}/${this.data.id}_${this.data.secret}_w.jpg`;
   }
 

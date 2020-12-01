@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Photo, Photos } from 'src/app/types/api-response.type';
+import { Photo, Photos } from '../../types/api-response.type';
 import { ResultCardComponent } from './result-card/result-card.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class ResultsComponent implements OnInit {
 
   openDialog(photo: Photo): void {
     const dialogRef = this.dialog.open(ResultCardComponent, {
-      width: '250px',
+      width: '400px',
       data: photo,
     });
 
