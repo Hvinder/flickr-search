@@ -13,18 +13,17 @@ export class ContainerComponent implements OnInit, OnDestroy {
   resultData: ApiResponse;
   searchHistory: string[] = [];
   isLoading = false;
+  query: string;
 
   private reactionsTrigger$ = new Subject<void>();
   private destroy$ = new Subject<void>();
-
-  imageUrl = `https://live.staticflickr.com/{server-id}/{id}_{secret}_{size-suffix}.jpg`;
-  query: string;
 
   constructor(private searchService: SearchService) {}
 
   ngOnInit() {
     this.getCachedData();
     this.getSearchHistory();
+    // Cancel api request if new is initiated, prevents unnecessary load on network
     this.reactionsTrigger$
       .pipe(
         switchMap(() => this.searchService.fetchImages(this.query)),
@@ -32,17 +31,22 @@ export class ContainerComponent implements OnInit, OnDestroy {
       )
       .subscribe((data) => {
         if (data && data.stat.toLowerCase() === 'ok') {
-          this.isLoading = false;
-          this.searchService.setHistory(this.query);
-          this.setCachedData(data);
-          this.resultData = data;
-          console.log(this.resultData);
+          this.processData(data);
         }
       });
   }
 
+  processData = (data: ApiResponse) => {
+    this.isLoading = false;
+    this.searchService.setHistory(this.query);
+    this.setCachedData(data);
+    this.resultData = data;
+  }
+
   getSearchHistory = () => {
-    this.searchService.getHistory().subscribe(data => this.searchHistory = data);
+    this.searchService
+      .getHistory()
+      .subscribe((data) => (this.searchHistory = data));
   }
 
   getCachedData = () => {

@@ -22,6 +22,7 @@ import {
   MatProgressBarModule,
   MatButtonModule,
   MatToolbarModule,
+  MatDialogModule,
 } from '@angular/material';
 
 @NgModule({
@@ -48,8 +49,10 @@ import {
     MatProgressBarModule,
     MatButtonModule,
     MatToolbarModule,
+    MatDialogModule,
   ],
   providers: [SearchService],
   bootstrap: [AppComponent],
+  entryComponents: [ResultCardComponent],
 })
 export class AppModule {}
