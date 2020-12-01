@@ -12,9 +12,19 @@
   box-shadow: 0 0 black;
 }
 
-@media only screen and (max-width: 1200px) {
+.card-container {
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  margin: 10px;
+  background: #fff;
+}
+
+@media screen and (max-width: 1200px) {
   .card-container {
-    width: 300px;
+    width: 290px;
   }
 }
 
@@ -25,14 +35,4 @@
 .example-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
-}
-
-.card-container {
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 350px;
-  margin: 10px;
-  background: #fff;
 }
