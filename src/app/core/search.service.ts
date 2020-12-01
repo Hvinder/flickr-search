@@ -11,11 +11,10 @@ export class SearchService {
   secret = '';
   endpoint = 'https://www.flickr.com/services/rest/?method=';
   searchUrl = 'flickr.photos.search';
-
   searchHistory: string[] = [];
 
   constructor(private http: HttpClient) {
-    this.searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    this.searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   }
 
   fetchImages(query: string): Observable<ApiResponse> {
