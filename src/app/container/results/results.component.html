@@ -8,6 +8,7 @@
         mat-card-image
         [src]="getImageUrl(i)"
         (click)="openDialog(photo)"
+        *ngIf="i < loadAmount"
       />
     </div>
   </div>
