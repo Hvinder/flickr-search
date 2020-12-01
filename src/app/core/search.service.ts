@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { ApiResponse } from '../types/api-response.type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,28 @@ export class SearchService {
   endpoint = 'https://www.flickr.com/services/rest/?method=';
   searchUrl = 'flickr.photos.search';
 
-  constructor(private http: HttpClient) {}
+  searchHistory: string[] = [];
 
-  fetchImages(query: string): Observable<any> {
-    const url = `${this.endpoint}${this.searchUrl}&format=json&api_key=${this.key}&text=${query}`;
-    return this.http.get(url);
+  constructor(private http: HttpClient) {
+    this.searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+  }
+
+  fetchImages(query: string): Observable<ApiResponse> {
+    const url = `${this.endpoint}${this.searchUrl}&format=json&nojsoncallback=1&api_key=${this.key}&text=${query}`;
+    return this.http.get<ApiResponse>(url);
+  }
+
+  setHistory = (query: string) => {
+    this.searchHistory.push(query);
+    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
+  }
+
+  getHistory(): Observable<string[]> {
+    return of(this.searchHistory);
+  }
+
+  removeHistory = (index: number) => {
+    this.searchHistory.splice(index, 1);
+    localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
   }
 }

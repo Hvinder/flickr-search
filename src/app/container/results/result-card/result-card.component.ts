@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Photo } from 'src/app/types/api-response.type';
 
 @Component({
   selector: 'app-result-card',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./result-card.component.scss']
 })
 export class ResultCardComponent implements OnInit {
+  // @Input() photo: Photo;
+  @Input() set photoData(value: Photo) {
+    console.log(value);
+  }
 
   constructor() { }
 

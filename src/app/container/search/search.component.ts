@@ -1,40 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
-import { SearchService } from 'src/app/core/search.service';
-import { ApiResponse } from 'src/app/types/api-response.type';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit {
   query: string;
-  resultData: ApiResponse;
+  @Output() queryEmitter = new EventEmitter<string>();
 
-  private reactionsTrigger$ = new Subject<void>();
-  private destroy$ = new Subject<void>();
-
-  constructor(private searchService: SearchService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.reactionsTrigger$
-      .pipe(
-        switchMap(() => this.searchService.fetchImages(this.query)),
-        takeUntil(this.destroy$)
-      )
-      .subscribe((data) => this.resultData = data);
   }
 
-  fetchResult = (event: KeyboardEvent) => {
+  queryChange = (event: KeyboardEvent) => {
     setTimeout(() => {
-      this.reactionsTrigger$.next();
+      this.queryEmitter.emit(this.query);
     }, 100);
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }
