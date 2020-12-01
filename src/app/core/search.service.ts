@@ -25,6 +25,7 @@ export class SearchService {
 
   setHistory = (query: string) => {
     this.searchHistory.push(query);
+    // this.searchHistory = [... new Set(this.searchHistory)];
     localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
   }
 

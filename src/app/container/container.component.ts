@@ -12,6 +12,7 @@ import { ApiResponse } from '../types/api-response.type';
 export class ContainerComponent implements OnInit, OnDestroy {
   resultData: ApiResponse;
   searchHistory: string[] = [];
+  isLoading = false;
 
   private reactionsTrigger$ = new Subject<void>();
   private destroy$ = new Subject<void>();
@@ -31,6 +32,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
       )
       .subscribe((data) => {
         if (data && data.stat.toLowerCase() === 'ok') {
+          this.isLoading = false;
           this.searchService.setHistory(this.query);
           this.setCachedData(data);
           this.resultData = data;
@@ -55,12 +57,17 @@ export class ContainerComponent implements OnInit, OnDestroy {
   }
 
   queryChange = (event) => {
+    this.isLoading = true;
     this.query = event;
     this.reactionsTrigger$.next();
   }
 
   removeHistory = (index: number) => {
     this.searchService.removeHistory(index);
+  }
+
+  getFromHistory = (history: string) => {
+    this.queryChange(history);
   }
 
   ngOnDestroy() {

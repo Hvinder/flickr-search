@@ -5,9 +5,13 @@
       *ngFor="let history of searchHistory; let i = index"
       [removable]="true"
       (removed)="removeHistory(i)"
+      (click)="getFromHistory(history)"
       >{{ history }} <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>
+  <div style="height: 20px;">
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate" style="margin-top: 10px;"></mat-progress-bar>
+  </div>
   <app-results
     *ngIf="resultData && resultData.stat === 'ok'"
     [photos]="resultData.photos"

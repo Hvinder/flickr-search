@@ -13,7 +13,16 @@ import { ResultsComponent } from './container/results/results.component';
 import { ResultCardComponent } from './container/results/result-card/result-card.component';
 import { SearchService } from './core/search.service';
 
-import { MatInputModule, MatFormFieldModule, MatCardModule, MatIconModule, MatChipsModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatIconModule,
+  MatChipsModule,
+  MatProgressBarModule,
+  MatButtonModule,
+  MatToolbarModule,
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,7 +31,7 @@ import { MatInputModule, MatFormFieldModule, MatCardModule, MatIconModule, MatCh
     ContainerComponent,
     SearchComponent,
     ResultsComponent,
-    ResultCardComponent
+    ResultCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +45,11 @@ import { MatInputModule, MatFormFieldModule, MatCardModule, MatIconModule, MatCh
     MatCardModule,
     MatIconModule,
     MatChipsModule,
+    MatProgressBarModule,
+    MatButtonModule,
+    MatToolbarModule,
   ],
   providers: [SearchService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -11,6 +11,7 @@
           mat-card-image
           [src]="getImageUrl(i)"
           alt="Photo of a Shiba Inu"
+          style="margin-bottom: 0;"
         />
         <mat-card-content>
           <p>
@@ -18,8 +19,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button mat-flat-button color="accent" style="width: 100%;">View</button>
         </mat-card-actions>
       </mat-card>
     </div>
