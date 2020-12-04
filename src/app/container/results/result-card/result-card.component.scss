@@ -8,6 +8,8 @@
 
 .mat-card-image {
   height: 300px;
+  width: 320px;
+  margin: 0;
 }
 
 .mat-card-title {
@@ -22,4 +24,17 @@
 button {
   width: 100%;
   margin-top: 15px;
+  border-radius: 10px;
+}
+
+.mat-flat-button {
+  background: black;
+}
+
+.mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-bottom: 0 !important;
 }

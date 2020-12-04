@@ -21,5 +21,9 @@ export class ResultCardComponent implements OnInit {
     return `https://live.staticflickr.com/${this.data.server}/${this.data.id}_${this.data.secret}_w.jpg`;
   }
 
+  downloadImage(): void {
+    window.open(`https://live.staticflickr.com/${this.data.server}/${this.data.id}_${this.data.secret}_b.jpg`);
+  }
+
   ngOnInit() {}
 }

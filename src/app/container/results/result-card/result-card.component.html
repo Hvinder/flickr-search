@@ -6,6 +6,7 @@
   </mat-card-header>
   <img mat-card-image [src]="getImageUrl()" alt="Photo of a Shiba Inu" />
   <mat-card-actions>
-    <button mat-flat-button color="accent" (click)="onNoClick()">Close</button>
+    <button mat-flat-button color="accent" (click)="onNoClick()" style="margin-right: 5px;">Close</button>
+    <button mat-flat-button color="accent" (click)="downloadImage()" style="margin-left: 5px;">Download</button>
   </mat-card-actions>
 </mat-card>
