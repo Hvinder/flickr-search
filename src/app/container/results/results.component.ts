@@ -1,12 +1,12 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { Photo, Photos } from '../../types/api-response.type';
-import { ResultCardComponent } from './result-card/result-card.component';
+import { Component, HostListener, Input, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material";
+import { Photo, Photos } from "../../types/api-response.type";
+import { ResultCardComponent } from "./result-card/result-card.component";
 
 @Component({
-  selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss'],
+  selector: "app-results",
+  templateUrl: "./results.component.html",
+  styleUrls: ["./results.component.scss"],
 })
 export class ResultsComponent implements OnInit {
   @Input() set photos(value: Photos) {
@@ -23,8 +23,8 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {}
 
   // This is to implement load on scroll feature
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
+  @HostListener("window:scroll", ["$event"])
+  onWindowScroll($event) {
     const pos =
       (document.documentElement.scrollTop || document.body.scrollTop) +
       document.documentElement.offsetHeight;
@@ -41,12 +41,12 @@ export class ResultsComponent implements OnInit {
 
   openDialog(photo: Photo): void {
     const dialogRef = this.dialog.open(ResultCardComponent, {
-      width: '400px',
+      width: "400px",
       data: photo,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log("The dialog was closed");
     });
   }
 }
